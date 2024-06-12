@@ -1,0 +1,46 @@
+<template>
+    <div class="slds-grid slds-wrap" style="background-color: white;">
+        <div class="slds-col slds-size_12-of-12">
+            <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                    <lightning-input type="number" label="Number of accounts to show" value={filterValue} onchange={quantityChange}></lightning-input>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered"
+        aria-labelledby="element-with-table-label other-element-with-table-label">
+        <thead>
+            <tr class="slds-line-height_reset">
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="Opportunity Name">Account Id</div>
+                </th>
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="Account Name">Account Name</div>
+                </th>
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="Close Date">Website</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <template for:each={accountsToDisplay} for:item="account">
+                <tr class="slds-hint-parent" key={rec}>
+                    <td data-label="Account Name">
+                        <div class="slds-truncate" title="Cloudhub">{account.Id}</div>
+                    </td>
+                    <td data-label="Account Name">
+                        <div class="slds-truncate" title="Cloudhub">{account.Name}</div>
+                    </td>
+                    <td data-label="WebSite">
+                        <div class="slds-truncate" title="4/14/2015">{account.Website}</div>
+                    </td>
+                    <td>
+                        <lightning-button data-accountid={account.Id} data-name={account.Name} onclick={handleConfirmClick} label="Delete">
+                        </lightning-button>
+                    </td>
+                </tr>
+            </template>
+        </tbody>
+    </table>
+</template>
